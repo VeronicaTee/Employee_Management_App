@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="../static/employee_home.css" rel="stylesheet" />
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+<!-- TODO!! If you change to an enum, remember to change employee.role to employee.role.getValue() (confirm this!!)-->
+
+<!--<div th:if="${employee.role.equals('Admin')}" class="col-lg-7 col-md-10">-->
+<!--    <h1 class="display-2 text-white" th:text="${employee.fullName}"></h1>-->
+<!--    <a th:href="@{/updateForm/{id}(id=${employee.id})}" class="btn btn-info">Edit profile</a>-->
+<!--    <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-danger">Delete</a>-->
+<!--</div>-->
+<br />
+
+<div class="container emp-profile">
+
+
+
+<!--    <form method="post">-->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5 th:text="${employee.fullName}">
+                    </h5>
+                    <h6 th:text="${employee.role}">
+                    </h6>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" th:href="@{/leaveApplication}" role="tab" aria-controls="profile" aria-selected="false">Attendance and Leave Details</a>
+                        </li>
+<!--                        <li class="nav-item">-->
+<!--                            <a class="nav-link active" id="supervisor-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Supervisor</a>-->
+<!--                        </li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-work">
+                    <br />
+                    <p>SUPERVISOR</p>
+                    <p th:text="${employee.supervisor}">Tom Warris</p><br/>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Username</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${employee.userName}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Full Name</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${employee.fullName}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${employee.email}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Phone Number</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${employee.phoneNumber}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Role</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${employee.role}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Salary</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${employee.salary}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Leave</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Annual Leave</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Status</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${employee.status}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Experience</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Expert</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Annual Salary</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p th:text="${employee.salary}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Total Projects</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>230</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>English Level</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Expert</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Availability</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>6 months</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Your Bio</label><br/>
+                                <p>Your detail description</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--    </form>-->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
