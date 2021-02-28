@@ -19,14 +19,24 @@ public class EmployeeController {
 
 
     //User Routes
+//
+//    @GetMapping("/employeeProfile/{id}")
+//    public String viewEmployeePage(@PathVariable (value = "id") long id, Model model) {
+//        //Get employee from the service
+//        Employee employee = employeeService.getEmployeeById(id);
+//
+//        // Set employee as a model attribute to pre-populate the form
+//        model.addAttribute("employee", employee);
+//        return "employee_home";
+//    }
 
-    @GetMapping("/employeeProfile/{id}")
-    public String viewEmployeePage(@PathVariable (value = "id") long id, Model model) {
-        //Get employee from the service
-        Employee employee = employeeService.getEmployeeById(id);
+    @GetMapping("/employeeProfile")
+    public String viewEmployeePage(Model model, HttpSession session) {
 
-        // Set employee as a model attribute to pre-populate the form
-        model.addAttribute("employee", employee);
+        Object userobj = session.getAttribute("employee");
+        if (userobj == null) return "redirect:/";
+
+        model.addAttribute("employee", new Employee());
         return "employee_home";
     }
 

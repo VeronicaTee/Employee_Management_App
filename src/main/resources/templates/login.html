@@ -14,7 +14,7 @@
     <p class="sign" align="center">Employee Login</p>
 <!--    <form action="#" th:action="@{/saveEmployee}" th:object ="${employee}" method="post">-->
 <!--    <form action="#" th:action="@{/employeeProfile/{id}(id=${employee.id})}" th:object = "${employee}" method="post" class="form1">-->
-    <form action="#" th:action="@{/login}" th:object = "${employee}" method="post" class="form1">
+    <form action="#" th:action="@{/auth/login}" th:object = "${employee}" method="post" class="form1">
         <input type="text" th:field = "*{email}" placeholder="Employee Email" class="un" align="center">
         <input type="password" th:field = "*{password}" placeholder="Password" class="pass" align="center">
         <button type="submit" class="submit" align="center">Login</button>

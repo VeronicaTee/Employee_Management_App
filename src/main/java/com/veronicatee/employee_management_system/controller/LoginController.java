@@ -15,6 +15,11 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
 
     @Autowired
+    public LoginController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
+//    @Autowired
     private EmployeeService employeeService;
 
     @GetMapping("/")
@@ -24,9 +29,16 @@ public class LoginController {
 
 
     // Login
-    @GetMapping("/login")
-    public String login(@ModelAttribute("employee") Employee employee) {
+//    @GetMapping("/login")
+//    public String login(@ModelAttribute("employee") Employee employee) {
+//
+//        return "login";
+//    }
 
+    @GetMapping("/login")
+    public String login(Model model) {
+        model.addAttribute("employee", new Employee());
+        model.addAttribute("invalid", null);
         return "login";
     }
 
@@ -38,13 +50,15 @@ public class LoginController {
             return "login";
         }
 
-        session.setAttribute("principal", employee);
-
-        if (employee.getRole().equals("Admin")) {
+//        if (employee.getRole().equals("Admin")) {
+//
 //            session.setAttribute("admin", employee);
-            return "/admin/allEmployees";
-        }
-        return "allEmployee";
+//            return "allEmployee";
+//        }
+        model.addAttribute("name", employee.getFullName());
+//        model.addAttribute("id", employee.getId());
+        session.setAttribute("employee", employee);
+        return "redirect:/employeeProfile";
 //        /employeeProfile/{id}(id=${employee.id})
     }
 

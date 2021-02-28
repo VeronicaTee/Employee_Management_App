@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 public class AdminController {
 
     @Autowired
-//    private EmployeeService employeeService;
     private AdminService adminService;
 
     // Admin routes

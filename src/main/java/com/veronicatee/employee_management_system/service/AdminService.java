@@ -10,7 +10,6 @@ public interface AdminService {
     Employee getEmployeeById(Long id);
     Employee getEmployeeByName(String name);
     void deleteEmployeeById(Long id);
-//    Employee getEmployeeByEmail(String email);
 
     Employee login(String email, String password);
 }
